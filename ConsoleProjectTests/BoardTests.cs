@@ -11,7 +11,7 @@ namespace ConsoleProjectTests
         [Test]
         public void Board_ImplementsCorrectInterface()
         {
-            var board = new Board(0,0,0);
+            Board board = null;
             IBoard iBoard = null;
 
             Assert.That(board, Is.EqualTo(iBoard));
@@ -25,8 +25,8 @@ namespace ConsoleProjectTests
             int boardHeight = 0;
             int mines = 0;
 
-            var board = new Board(boardWidth, boardHeight, mines);
-            var newBoard = board.CreateBoard<Square>(boardWidth, boardHeight);
+            var board = new Board();
+            var newBoard = board.CreateBoard<Square, Location>(boardWidth, boardHeight);
            
             Assert.That(newBoard, Is.EqualTo(new List<ISquare>()));
         }
@@ -38,8 +38,8 @@ namespace ConsoleProjectTests
             int boardHeight = 8;
             int mines = 0;
 
-            var board = new Board(boardWidth, boardHeight, mines);
-            var newBoard = board.CreateBoard<Square>(boardWidth, boardHeight);
+            var board = new Board();
+            var newBoard = board.CreateBoard<Square, Location>(boardWidth, boardHeight);
 
             Assert.That(newBoard.Count, Is.EqualTo(64));
         }

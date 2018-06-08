@@ -5,8 +5,11 @@ namespace Game
     public class Square : ISquare
     {
         public bool IsMine { get; set; }
-        public int Xlocatioon { get; set; }
-        public int Ylocatioon { get; set; }
+        public ILocation Location { get; set; }
+
+        public void CheckForMine()
+        {
+        }
 
         public void HasBeenMovedTo()
         {

@@ -3,10 +3,9 @@
     public interface ISquare
     {
         bool IsMine { get; set; }
-        int Xlocatioon { get; set; }
-        int Ylocatioon { get; set; }
-
-        void HasBeenMovedTo();
+        ILocation Location { get; set; }
         
+        void HasBeenMovedTo();
+        void CheckForMine();        
     }
 }

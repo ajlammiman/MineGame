@@ -7,15 +7,14 @@ namespace Game
     {
         public int _numberOfMines { get; set; }
 
-        public Board(int boardWidth, int boardHeight, int numberOfMines)
+        public Board()
         {
-            _numberOfMines = numberOfMines;
-            var squares = CreateBoard<Square>(boardWidth, boardHeight);
-
-            SetUpBoard(squares, _numberOfMines);
+           
         }
 
-        public List<ISquare> CreateBoard<T>(int boardWidth, int boardHeight) where T : ISquare, new()
+        public List<ISquare> CreateBoard<T, L>(int boardWidth, int boardHeight) 
+            where T : ISquare, new()
+            where L : ILocation, new()
         {
             List<ISquare> board = new List<ISquare>();
 
@@ -23,7 +22,7 @@ namespace Game
             {
                 for (int Yaxis = 0; Yaxis < boardWidth; Yaxis++)
                 {
-                    var square = new T { Xlocatioon = Xaxis, Ylocatioon = Yaxis };
+                    var square = new T { Location = new L { XLocation = Xaxis, YLocation = Yaxis } };
 
                     board.Add(square);
                 }
@@ -32,10 +31,11 @@ namespace Game
             return board;
         }
 
-        public void SetUpBoard(List<ISquare> squares, int mines)
+        public List<ISquare> SetUpMines(List<ISquare> squares, int mines)
         {
+            return squares;
         }
 
-        
+       
     }
 }
