@@ -8,8 +8,8 @@ namespace Core
             where T : ISquare, new()
             where L : ILocation, new();
             
-        List<ISquare> SetUpMines(List<ISquare> squares, int mines);
-        
-        
+        List<ISquare> SeedMines(List<ISquare> squares, int mines);
+
+        bool IsValidLocation(ILocation newLocation, List<ISquare> squares);
     }
 }

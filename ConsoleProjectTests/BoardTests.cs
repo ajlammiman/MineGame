@@ -20,30 +20,45 @@ namespace ConsoleProjectTests
         [Test]
         public void Board_CreatesBoardReturnsListOfSqaures()
         {
-
-            int boardWidth = 0;
-            int boardHeight = 0;
-            int mines = 0;
-
-            var board = new Board();
-            var newBoard = board.CreateBoard<Square, Location>(boardWidth, boardHeight);
-           
-            Assert.That(newBoard, Is.EqualTo(new List<ISquare>()));
+            var squares = CreateBoardForTest(0, 0, 0);
+            
+            Assert.That(squares, Is.EqualTo(new List<ISquare>()));
         }
         
         [Test]
         public void Board_CreatesBoardReturnsCorrectDimeensions()
         {
-            int boardWidth = 8;
-            int boardHeight = 8;
-            int mines = 0;
+            var squares = CreateBoardForTest(8,8,0);
 
-            var board = new Board();
-            var newBoard = board.CreateBoard<Square, Location>(boardWidth, boardHeight);
-
-            Assert.That(newBoard.Count, Is.EqualTo(64));
+            Assert.That(squares.Count, Is.EqualTo(64));
         }
 
+        [Test]
+        public void Board_TestThatValidLocationReturnsTrue()
+        {
+            var board = new Board();
+            var squares = CreateBoardForTest(8, 8, 0);
+            var location = new Location { XLocation = 2, YLocation = 4 };
 
+            Assert.That(board.IsValidLocation(location, squares), Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Board_TestThatInValidLocationReturnsFalse()
+        {
+            var board = new Board();
+            var squares = CreateBoardForTest(8, 8, 0);
+            var location = new Location { XLocation = 70, YLocation = 70 };
+
+            Assert.That(board.IsValidLocation(location, squares), Is.EqualTo(false));
+        }
+
+        private List<ISquare> CreateBoardForTest(int width, int height, int mines)
+        {
+            var board = new Board();
+            var squares = board.CreateBoard<Square, Location>(width, height);
+
+            return squares;
+        }
     }
 }

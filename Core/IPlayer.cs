@@ -2,9 +2,9 @@
 {
     public interface IPlayer
     {
-        void StartingLives(int lives);
-        void StartingLocation(ILocation location);
-        void RemoveLives(int livesToremove);
-        void GetCurrentLocation();
+        int Lives { get; set; }
+        ILocation MoveLocation(ILocation location);
+        int RemoveLives(int livesToremove);
+        ILocation GetCurrentLocation();
     }
 }

@@ -15,7 +15,7 @@ namespace Game
             _board = board;
 
             _squares = _board.CreateBoard<Square, Location>(boardWidth, boardHeight);
-            _board.SetUpMines(_squares, numberOfMines);
+            _board.SeedMines(_squares, numberOfMines);
         }
     }
 }
