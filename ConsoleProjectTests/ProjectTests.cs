@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace ConsoleProjectTests
+namespace GameTests
 {
     [TestFixture]
     public class ProjectTests

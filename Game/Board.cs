@@ -9,12 +9,7 @@ namespace Game
     {
         public int _numberOfMines { get; set; }
 
-        public Board()
-        {
-           
-        }
-
-        public List<ISquare> CreateBoard<T, L>(int boardWidth, int boardHeight) 
+        public IEnumerable<ISquare> CreateBoard<T, L>(int boardWidth, int boardHeight) 
             where T : ISquare, new()
             where L : ILocation, new()
         {
@@ -33,37 +28,41 @@ namespace Game
             return board;
         }
 
-        public List<ISquare> SeedMines<T>(List<ISquare> squares, int mines) where T : ILocation
+        public IEnumerable<ISquare> SeedMines(IList<ISquare> squares, IEnumerable<ILocation> mines)
         {
-            int boardWidth = 0;
-            int boardHeight = 0;
-
-            for (int i = 0; i < mines; i++)
+            foreach (ILocation mine in mines)
             {
-                var mineLocation = CreateMine<T>(boardWidth, boardHeight);
-
-                var square = squares.FirstOrDefault(s => s.Location.Equals(mineLocation));
+                var square = squares.FirstOrDefault(s => s.Location.Equals(mine));
                 if (square != null) square.IsMine = true;
             }
 
             return squares;
         }
 
-        private ILocation CreateMine<T>(int boardWidth, int boardHeight) where T : ILocation, new()
+        public IEnumerable<ILocation> CreateMine<T>(int boardWidth, int boardHeight, int numberOfMines, IList<ILocation> mineLocations) where T : ILocation, new()
         {
             Random rnd = new Random();
-            int randomX = rnd.Next(0, boardWidth);
-            int randomY = rnd.Next(0, boardHeight);
+            
+            for (int i = 0; i < numberOfMines; i++)
+            {
+                int randomX = rnd.Next(0, boardWidth);
+                int randomY = rnd.Next(0, boardHeight);
 
-            var mineLocation = new T { XLocation = randomX, YLocation = randomY };
+                mineLocations.Add(new T { XLocation = randomX, YLocation = randomY });
+            }
 
-            return mineLocation;
+            return mineLocations;
         }
 
 
         public bool IsValidLocation(ILocation newLocation, List<ISquare> squares)
         {
             return squares.Any(s => s.Location.Equals(newLocation));
+        }
+
+        public List<ISquare> SeedMines(List<ISquare> squares, int mines)
+        {
+            throw new NotImplementedException();
         }
     }
 }

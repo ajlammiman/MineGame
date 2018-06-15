@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineGame", "ConsoleTemplate\MineGame.csproj", "{445856EF-DB86-4017-8993-17925B19592A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleProjectTests", "ConsoleProjectTests\ConsoleProjectTests.csproj", "{CB678C7C-74F3-42E6-A5B2-CC21C46A37C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTests", "ConsoleProjectTests\GameTests.csproj", "{CB678C7C-74F3-42E6-A5B2-CC21C46A37C8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{0B52AE92-06F2-477C-B985-250495C567F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game", "Game\Game.csproj", "{7D93A02A-7DF4-42DC-94FC-A3178602F1E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game", "Game\Game.csproj", "{7D93A02A-7DF4-42DC-94FC-A3178602F1E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

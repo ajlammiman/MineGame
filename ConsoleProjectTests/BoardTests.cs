@@ -3,7 +3,7 @@ using Game;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace ConsoleProjectTests
+namespace GameTests
 {
     [TestFixture, Category("Board Tests")]
     class BoardTests
@@ -56,7 +56,7 @@ namespace ConsoleProjectTests
         private List<ISquare> CreateBoardForTest(int width, int height, int mines)
         {
             var board = new Board();
-            var squares = board.CreateBoard<Square, Location>(width, height);
+            var squares = (List<ISquare>)board.CreateBoard<Square, Location>(width, height);
 
             return squares;
         }

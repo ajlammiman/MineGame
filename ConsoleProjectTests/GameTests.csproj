@@ -10,8 +10,8 @@
     <ProjectGuid>{CB678C7C-74F3-42E6-A5B2-CC21C46A37C8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleProjectTests</RootNamespace>
-    <AssemblyName>ConsoleProjectTests</AssemblyName>
+    <RootNamespace>GameTests</RootNamespace>
+    <AssemblyName>GameTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
