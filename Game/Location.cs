@@ -4,6 +4,11 @@ namespace Game
 {
     public class Location : ILocation
     {
+        public Location()
+        {
+            
+        }
+
         public int XLocation { get; set; }
         public int YLocation { get; set; }
 

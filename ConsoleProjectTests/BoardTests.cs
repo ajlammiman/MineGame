@@ -53,6 +53,17 @@ namespace GameTests
             Assert.That(board.IsValidLocation(location, squares), Is.EqualTo(false));
         }
 
+        [Test]
+        public void Board_TestThatBoardCreatesMines()
+        {
+            var board = new Board();
+            var locations = new List<ILocation>();
+
+            var mines = (List<Location>)board.CreateMine<Location>(8, 8, 4, locations);
+
+            Assert.That(mines.Count, Is.EqualTo(4));
+        }
+
         private List<ISquare> CreateBoardForTest(int width, int height, int mines)
         {
             var board = new Board();

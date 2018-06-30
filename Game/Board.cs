@@ -60,9 +60,6 @@ namespace Game
             return squares.Any(s => s.Location.Equals(newLocation));
         }
 
-        public List<ISquare> SeedMines(List<ISquare> squares, int mines)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

@@ -16,5 +16,6 @@ namespace Game
 
             _squares = (List<ISquare>)_board.CreateBoard<Square, Location>(boardWidth, boardHeight);
         }
+
     }
 }
