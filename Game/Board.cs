@@ -8,6 +8,7 @@ namespace Game
     public  class Board : IBoard
     {
         public int _numberOfMines { get; set; }
+       
 
         public IEnumerable<ISquare> CreateBoard<T, L>(int boardWidth, int boardHeight) 
             where T : ISquare, new()
@@ -28,7 +29,7 @@ namespace Game
             return board;
         }
 
-        public IEnumerable<ISquare> SeedMines(IList<ISquare> squares, IEnumerable<ILocation> mines)
+        public IEnumerable<ISquare> SeedMines(IEnumerable<ISquare> squares, IEnumerable<ILocation> mines)
         {
             foreach (ILocation mine in mines)
             {
@@ -55,7 +56,7 @@ namespace Game
         }
 
 
-        public bool IsValidLocation(ILocation newLocation, List<ISquare> squares)
+        public bool IsValidLocation(ILocation newLocation, IEnumerable<ISquare> squares)
         {
             return squares.Any(s => s.Location.Equals(newLocation));
         }

@@ -2,6 +2,7 @@
 using Game;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GameTests
 {
@@ -59,9 +60,43 @@ namespace GameTests
             var board = new Board();
             var locations = new List<ILocation>();
 
-            var mines = (List<Location>)board.CreateMine<Location>(8, 8, 4, locations);
-
+            var mines = board.CreateMine<Location>(8, 8, 4, locations).ToList().ConvertAll(o => (Location)o);
+            
             Assert.That(mines.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void Board_TestThatMinesAreSeeded()
+        {
+            var squares = new List<Square> {
+                new Square {
+                    Location = new Location
+                    {
+                        XLocation = 1,
+                        YLocation = 1
+                    }
+                },
+                new Square {
+                    Location = new Location
+                    {
+                        XLocation = 2,
+                        YLocation = 2
+                    }
+                },
+                new Square {
+                    Location = new Location
+                    {
+                        XLocation = 3,
+                        YLocation = 3
+                    }
+                } };
+            var mines = new List<Location> { new Location { XLocation = 2, YLocation = 2 }, new Location { XLocation = 3, YLocation = 3 }};
+
+            var board = new Board();
+
+            var minedSquares = board.SeedMines(squares, mines);
+
+            Assert.That(minedSquares.Where(m => m.IsMine).Count(), Is.EqualTo(2));
         }
 
         private List<ISquare> CreateBoardForTest(int width, int height, int mines)
