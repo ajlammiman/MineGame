@@ -19,92 +19,55 @@ namespace GameTests
         }
 
         [Test]
-        public void Board_CreatesBoardReturnsListOfSqaures()
+        public void Board_CreatesBoardReturnsBoard()
         {
-            var squares = CreateBoardForTest(0, 0, 0);
+            var board = CreateBoardForTest(0, 0, 0);
             
-            Assert.That(squares, Is.EqualTo(new List<ISquare>()));
+            Assert.That(board, Is.EqualTo(new Board(0,0,0) { }));
         }
         
         [Test]
         public void Board_CreatesBoardReturnsCorrectDimeensions()
         {
-            var squares = CreateBoardForTest(8,8,0);
+            var board = CreateBoardForTest(8,8,0);
 
-            Assert.That(squares.Count, Is.EqualTo(64));
+            Assert.That(board.Squares.Count(), Is.EqualTo(64));
         }
 
         [Test]
         public void Board_TestThatValidLocationReturnsTrue()
         {
-            var board = new Board();
-            var squares = CreateBoardForTest(8, 8, 0);
+            var board = CreateBoardForTest(8, 8, 0);
             var location = new Location { XLocation = 2, YLocation = 4 };
 
-            Assert.That(board.IsValidLocation(location, squares), Is.EqualTo(true));
+            Assert.That(board.IsValidLocation(location), Is.EqualTo(true));
         }
 
         [Test]
         public void Board_TestThatInValidLocationReturnsFalse()
         {
-            var board = new Board();
-            var squares = CreateBoardForTest(8, 8, 0);
+            var board = CreateBoardForTest(8, 8, 0);
             var location = new Location { XLocation = 70, YLocation = 70 };
 
-            Assert.That(board.IsValidLocation(location, squares), Is.EqualTo(false));
+            Assert.That(board.IsValidLocation(location), Is.EqualTo(false));
         }
 
         [Test]
-        public void Board_TestThatBoardCreatesMines()
+        public void Board_TestThatBoardCreatesRightNumberOfMines()
         {
-            var board = new Board();
+            var board = CreateBoardForTest(8, 8, 4);
             var locations = new List<ILocation>();
 
-            var mines = board.CreateMine<Location>(8, 8, 4, locations).ToList().ConvertAll(o => (Location)o);
+            board.AddMines<Location>();
             
-            Assert.That(mines.Count, Is.EqualTo(4));
+            Assert.That(board.Squares.Where(s => s.IsMine).Count, Is.EqualTo(4));
         }
-
-        [Test]
-        public void Board_TestThatMinesAreSeeded()
+        
+        private IBoard CreateBoardForTest(int width, int height, int mines)
         {
-            var squares = new List<Square> {
-                new Square {
-                    Location = new Location
-                    {
-                        XLocation = 1,
-                        YLocation = 1
-                    }
-                },
-                new Square {
-                    Location = new Location
-                    {
-                        XLocation = 2,
-                        YLocation = 2
-                    }
-                },
-                new Square {
-                    Location = new Location
-                    {
-                        XLocation = 3,
-                        YLocation = 3
-                    }
-                } };
-            var mines = new List<Location> { new Location { XLocation = 2, YLocation = 2 }, new Location { XLocation = 3, YLocation = 3 }};
+            var board = new Board(mines, height, width);
 
-            var board = new Board();
-
-            var minedSquares = board.SeedMines(squares, mines);
-
-            Assert.That(minedSquares.Where(m => m.IsMine).Count(), Is.EqualTo(2));
-        }
-
-        private List<ISquare> CreateBoardForTest(int width, int height, int mines)
-        {
-            var board = new Board();
-            var squares = (List<ISquare>)board.CreateBoard<Square, Location>(width, height);
-
-            return squares;
+            return board;
         }
     }
 }

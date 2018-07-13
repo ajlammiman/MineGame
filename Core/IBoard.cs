@@ -4,14 +4,13 @@ namespace Core
 {
     public interface IBoard
     {
-        IEnumerable<ISquare> CreateBoard<T, L>(int BoardWidth, int Boardheight) 
-            where T : ISquare, new()
+        ISquare[] Squares { get; set; }
+
+        void CreateBoard<S, L>() where S : ISquare, new()
             where L : ILocation, new();
 
-        IEnumerable<ISquare> SeedMines(IEnumerable<ISquare> squares, IEnumerable<ILocation> mines);
+        void AddMines<L>() where L : ILocation, new();
 
-        IEnumerable<ILocation> CreateMine<T>(int boardWidth, int boardHeight, int numberOfMines, IList<ILocation> mineLocations) where T : ILocation, new();
-
-        bool IsValidLocation(ILocation newLocation, IEnumerable<ISquare> squares);
+        bool IsValidLocation(ILocation location);
     }
 }
