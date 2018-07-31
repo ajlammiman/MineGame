@@ -29,7 +29,7 @@ namespace Game
             {
                 for (int Yaxis = 0; Yaxis < _boardWidth; Yaxis++)
                 {
-                    var square = new S { Location = new L { XLocation = Xaxis, YLocation = Yaxis } };
+                    var square = new S { Location = new L { XLocation = Xaxis + 1, YLocation = Yaxis + 1 } };
 
                     squares.Add(square);
                 }
