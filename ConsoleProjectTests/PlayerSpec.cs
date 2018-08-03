@@ -9,8 +9,15 @@ namespace GameTests
         [Test]
         public void player_loses_a_life()
         {
-            given_a_player_makes_a_move_onto_a_square_with_a_mine();
+            given_a_player_makes_a_move();
             then_one_life_is_lost();
+        }
+
+        [Test]
+        public void player_makes_a_move()
+        {
+            given_a_player_makes_a_move();
+            then_location_is_changed();
         }
 
     }

@@ -14,21 +14,36 @@ namespace GameTests
         public void init()
         {
             board = new Board(1, 1, 1);
-            board.CreateBoard<Square, Location>();
-            board.AddMines<Location>();
+            board.Squares = new Square[]
+            {
+                new Square()
+                {
+                    Location  = new Location() { XLocation = 1, YLocation = 1},
+                }
+            };
             player = new Player(board, 2);
         }
 
-        public void given_a_player_makes_a_move_onto_a_square_with_a_mine()
+        public void given_a_player_makes_a_move()
         {
             livesBeforeMove = player.lives;
             var newLocation = new Location() { XLocation = 1, YLocation = 1 };
             player.MoveLocation(newLocation);
         }
 
+        private void and_square_has_mine()
+        {
+           
+        }
+
         public void then_one_life_is_lost()
         {
             Assert.That(player.lives, Is.EqualTo(livesBeforeMove - 1));
+        }
+
+        private void then_location_is_changed()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

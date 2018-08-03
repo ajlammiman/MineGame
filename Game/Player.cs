@@ -1,9 +1,9 @@
-﻿using Core;
-using System.Linq;
+﻿using System.Linq;
+using Core;
 
-namespace GameTests
+namespace Game
 {
-    class Player : IPlayer
+    public class Player : IPlayer
     {
         public int lives { get; set; }
         private IBoard board { get; set; }
