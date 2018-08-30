@@ -7,7 +7,8 @@ namespace Game
     {
         public int lives { get; set; }
         private IBoard board { get; set; }
-        public ILocation currentLocation { get; set; }
+        public ILocation currentLocation { get; set;
+        }
 
         public Player(IBoard board, int lives)
         {

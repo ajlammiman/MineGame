@@ -19,10 +19,10 @@ namespace Game
 
             var otherLocation = (ILocation)obj;
 
-            if (XLocation != otherLocation.XLocation && YLocation != otherLocation.YLocation)
-                return false;
+            if (XLocation == otherLocation.XLocation && YLocation == otherLocation.YLocation)
+                return true;
 
-            return true;
+            return false;
         }
         
     }

@@ -7,6 +7,11 @@ namespace Game
         public bool IsMine { get; set; }
         public ILocation Location { get; set; }
 
+        public Square()
+        {
+            IsMine = false;
+        }
+
         public void CheckForMine()
         {
         }

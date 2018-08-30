@@ -19,21 +19,26 @@ namespace GameTests
                 new Square()
                 {
                     Location  = new Location() { XLocation = 1, YLocation = 1},
+                    IsMine = true
+                },
+                new Square()
+                {
+                    Location  = new Location() { XLocation = 1, YLocation = 2}
                 }
             };
             player = new Player(board, 2);
         }
 
-        public void given_a_player_makes_a_move()
+        public void given_a_player_makes_a_move_to_a_mined_square()
         {
             livesBeforeMove = player.lives;
-            var newLocation = new Location() { XLocation = 1, YLocation = 1 };
-            player.MoveLocation(newLocation);
+            player.MoveLocation(new Location() { XLocation = 1, YLocation = 1 });
+
         }
 
-        private void and_square_has_mine()
+        private void given_a_player_makes_a_move()
         {
-           
+            player.MoveLocation(new Location() { XLocation = 1, YLocation = 2 });
         }
 
         public void then_one_life_is_lost()
@@ -43,7 +48,7 @@ namespace GameTests
 
         private void then_location_is_changed()
         {
-            throw new System.NotImplementedException();
+            Assert.That(player.currentLocation, Is.EqualTo(board.Squares[1].Location));
         }
     }
 }
