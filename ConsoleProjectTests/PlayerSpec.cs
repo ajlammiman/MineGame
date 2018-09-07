@@ -20,5 +20,11 @@ namespace GameTests
             then_location_is_changed();
         }
 
+        [Test]
+        public void player_moves_off_board()
+        {
+            given_a_player_makes_a_move_off_the_board();
+            then_the_move_is_not_allowed();
+        }
     }
 }

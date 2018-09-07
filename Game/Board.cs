@@ -44,10 +44,10 @@ namespace Game
         {
             Random rnd = new Random();
             
-            for (int i = 0; i < _numberOfMines; i++)
+            for (int i = 1; i <= _numberOfMines; i++)
             {
-                int randomX = rnd.Next(0, _boardWidth);
-                int randomY = rnd.Next(0, _boardHeight);
+                int randomX = rnd.Next(1, _boardWidth);
+                int randomY = rnd.Next(1, _boardHeight);
 
                 var mineLocation = new L { XLocation = randomX, YLocation = randomY  };
 

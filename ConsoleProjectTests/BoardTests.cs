@@ -18,13 +18,6 @@ namespace GameTests
             Assert.That(board, Is.EqualTo(iBoard));
         }
 
-        [Test]
-        public void Board_CreatesBoardReturnsBoard()
-        {
-            var board = CreateBoardForTest(0, 0, 0);
-            
-            Assert.That(board, Is.EqualTo(new Board(0,0,0) { }));
-        }
         
         [Test]
         public void Board_CreatesBoardReturnsCorrectDimeensions()
@@ -55,18 +48,18 @@ namespace GameTests
         [Test]
         public void Board_TestThatBoardCreatesRightNumberOfMines()
         {
-            var board = CreateBoardForTest(8, 8, 4);
+            var board = CreateBoardForTest(1, 1, 1);
             var locations = new List<ILocation>();
 
             board.AddMines<Location>();
             
-            Assert.That(board.Squares.Where(s => s.IsMine).Count, Is.EqualTo(4));
+            Assert.That(board.Squares.Where(s => s.IsMine).Count, Is.EqualTo(1));
         }
         
         private IBoard CreateBoardForTest(int width, int height, int mines)
         {
             var board = new Board(mines, height, width);
-
+            board.CreateBoard<Square, Location>();
             return board;
         }
     }

@@ -21,10 +21,13 @@ namespace Game
             throw new System.NotImplementedException();
         }
 
-        public void MoveLocation(ILocation location)
+        public bool MoveLocation(ILocation location)
         {
             var newLocation = this.board.Squares.FirstOrDefault(s => s.Location.Equals(location));
-            
+
+            if (newLocation == null)
+                return false;
+
             if (!newLocation.IsMine)
             {
                 currentLocation = newLocation.Location;
@@ -33,6 +36,8 @@ namespace Game
             {
                 this.lives--;
             }
+
+            return true;
         }
 
         public int RemoveLives(int livesToremove)
