@@ -26,5 +26,15 @@ namespace GameTests
             given_a_player_makes_a_move_off_the_board();
             then_the_move_is_not_allowed();
         }
+
+        [Test]
+        public void player_runs_out_of_lives()
+        {
+            given_a_player_has_one_life();
+            given_a_player_makes_a_move_to_a_mined_square();
+            then_player_is_no_longer_alive();
+        }
+
+        
     }
 }

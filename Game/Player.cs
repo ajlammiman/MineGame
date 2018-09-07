@@ -7,18 +7,13 @@ namespace Game
     {
         public int lives { get; set; }
         private IBoard board { get; set; }
-        public ILocation currentLocation { get; set;
-        }
+        public ILocation currentLocation { get; set;}
+        public bool isAlive { get; set; }
 
         public Player(IBoard board, int lives)
         {
             this.board = board;
             this.lives = lives;
-        }
-
-        public ILocation GetCurrentLocation()
-        {
-            throw new System.NotImplementedException();
         }
 
         public bool MoveLocation(ILocation location)
@@ -35,14 +30,12 @@ namespace Game
             else
             {
                 this.lives--;
+                isAlive = (this.lives == 0) ? false : true;
             }
 
             return true;
         }
 
-        public int RemoveLives(int livesToremove)
-        {
-            throw new System.NotImplementedException();
-        }
+       
     }
 }

@@ -48,6 +48,11 @@ namespace GameTests
             validLoc = player.MoveLocation(new Location() { XLocation = 1, YLocation = 3 });
         }
 
+        private void given_a_player_has_one_life()
+        {
+            player = new Player(board, 1);
+        }
+
         public void then_one_life_is_lost()
         {
             Assert.That(player.lives, Is.EqualTo(livesBeforeMove - 1));
@@ -61,6 +66,11 @@ namespace GameTests
         private void then_the_move_is_not_allowed()
         {
             Assert.That(validLoc, Is.False);
+        }
+
+        private void then_player_is_no_longer_alive()
+        {
+            Assert.That(!player.isAlive);
         }
     }
 }
