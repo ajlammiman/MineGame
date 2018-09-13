@@ -1,4 +1,4 @@
-﻿using Game;
+﻿using MineGame;
 using NUnit.Framework;
 
 namespace GameTests

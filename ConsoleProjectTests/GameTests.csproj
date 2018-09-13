@@ -82,9 +82,9 @@
       <Project>{0b52ae92-06f2-477c-b985-250495c567f8}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Game\Game.csproj">
+    <ProjectReference Include="..\Game\MineGame.csproj">
       <Project>{7d93a02a-7df4-42dc-94fc-a3178602f1e9}</Project>
-      <Name>Game</Name>
+      <Name>MineGame</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

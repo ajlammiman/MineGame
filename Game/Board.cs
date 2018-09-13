@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core;
 
-namespace Game
+namespace MineGame
 {
     public  class Board : IBoard
     {

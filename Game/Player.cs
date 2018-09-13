@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Core;
 
-namespace Game
+namespace MineGame
 {
     public class Player : IPlayer
     {

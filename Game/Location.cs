@@ -1,6 +1,6 @@
 ﻿using Core;
 
-namespace Game
+namespace MineGame
 {
     public class Location : ILocation
     {
