@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoardTests.cs" />
+    <Compile Include="GameSpecs.cs" />
+    <Compile Include="GameTests.cs" />
     <Compile Include="PlayerSpec.cs" />
     <Compile Include="PlayerTests.cs" />
     <Compile Include="ProjectTests.cs" />
